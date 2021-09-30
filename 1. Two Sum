@@ -1,1 +1,128 @@
+/**
+* @param {number[]} nums
+* @param {number} target
+* @return {number[]}
+*/
+var twoSum = function(nums, target) {
+    let numberIndex = new Map();
+    let result = [];
 
+    for (let i = 0; i < nums.length; i++) {
+        let num = num[i];
+        let complement = target - num;
+
+        if (numberIndex.has(complement)) {
+            result[0] = numberIndex.get(complement);
+            result[1] = i;
+
+            return result;
+        }
+
+
+
+    }
+
+    return result;
+};
+
+
+
+
+///////////////////////////////////////////////////////////Terrible While Board Notes //////////////////////////////////////////////////////////////////////////////////
+In this question, we need to determine if two numbers in an array add up to the target number, and if they do, return their respective array indeces.
+
+The key to solving this problem is creating a map that holds the numbers and their indeces. As we iterate through the array, we check if the difference between the number
+we’re on and the target (we’ll call the difference between the current number and the target the “complement”) is in the map. If it is, we grab the complement and its 
+index from the map and add them to the result array. Then we grab the current number and its index and add them to the result array. Finally, we return the array.
+
+Now, to the code. Let’s start with the function skeleton provided by LeetCode.
+
+
+
+
+                                                                     /**
+                                                                     * @param {number[]} nums
+                                                                     * @param {number} target
+                                                                     * @return {number[]}
+                                                                     */
+                                                                     var twoSum = function(nums, target) {}
+
+
+This function expects two arguments, a “nums” array, and a target. The nums array holds a list of numbers, and we want to check if any two of those numbers add up to the
+target.
+
+First, we need to create the map. Remember that it will hold the numbers in the nums array and their indeces.
+
+For example, if the nums array is [1, 6, 3, 4] and we iterate over the whole thing, the content of the map will look like this:
+– 1: 0
+– 6: 1
+– 3: 2
+– 4: 3
+
+Next, we create the result variable and initialize it to an empty array.
+
+ 
+                                                                     let result = [];
+
+
+This result array will either end up having the indeces of the two numbers that add up to the target, or be returned as this empty array if no two numbers add up to the 
+target.
+
+It’s time to iterate over the nums array. We can do this with a for loop or a for each loop since we need each number’s index. In this case, we’ll just use a for loop.
+
+
+                                                                     for (let i = 0; i < nums.length; i++) {
+
+
+
+Now, we need a reference to the number we’re on. We could represent it in the loop as nums[i], but to make it easier to read, let’s save it in a variable called nums.
+
+
+                                                                    let num = nums[i];
+
+
+
+Now we need to know what the complement is and save it in a variable. Remember the complement is the number that, when added to the current number, adds up to the target.
+
+
+                                                                    let complement = target - num;
+
+
+Remember how I mentioned the map holds the numbers in the array and their indeces? That’s true, but it doesn’t necessarily hold *all* of them. We only need to add
+a number and its index to the map if we iterate over it. In the same iteration, we check its complement to see if its in the map. Because of this, we may never have to 
+look at every number in the array. We can end the function and return the result as soon as we find two numbers that add up to the target.                                        
+
+
+For example, if the array is [2, 11, 8, 3, 5, 9, 1, 7] and the target is the number 13, we can stop after the first two numbers (2 and 11) because their sum is the 13 
+we’re looking for. There’s no need to iterate over the next six numbers and add their data to the map. That code looks like this:
+
+
+                                                                    if (numberIndex.has(complement)) {
+                                                                        result[0] = numberIndex.get(complement);
+                                                                        result[1] = i;
+          
+                                                                        return result;
+                                                                    }
+
+
+We are checking the complement of the number we’re on. If its complement is in the map, we can add those two indeces to the result array and return those results 
+immediately.
+
+
+The final step in the loop, if we make it this far (which would only happen if we haven’t found the two numbers that add up to the target), is to add the current number 
+we’re on and its index to the map. Then this iteration of the loop ends and we move on the the next iteration if there is one.
+
+
+                                                                       numberIndex.set(num, i);
+
+
+The final step, which we only get to if we’ve looked at *every* number in the array and determined its complement is not in the array, is to return the result. This will 
+be the same empty array we initialized it to. I’ll reiterate again that the only way we can get to this line of code is if no two numbers in the array add up to the target. 
+If they did, we would have found them in the above for loop and returned the result index at that point.
+
+
+                                                                       return result;
+
+
+And that’s it! The full implementation is at the bottom of this page, but if you want to support us and are interested in the resources we use to make this content, 
+check out the links below.
