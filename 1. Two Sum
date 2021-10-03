@@ -8,7 +8,7 @@ var twoSum = function(nums, target) {
     let result = [];
 
     for (let i = 0; i < nums.length; i++) {
-        let num = num[i];
+        let num = nums[i];
         let complement = target - num;
 
         if (numberIndex.has(complement)) {
