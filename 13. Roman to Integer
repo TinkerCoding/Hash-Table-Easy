@@ -140,4 +140,56 @@ let n be the length of the input string (the total number of symbols in it).
 
   Because only a contrant number of single-value variables are used, the space complexity is 0(1).
 
-`````````````````````````````````````````````````````
+Approach 2: Left-to-Right Pass Improved`````````````````````````````````````````````````````````````````````````````
+
+Intuition:
+
+Instead of viewing a Roman Numeral as having 7 unique symbols, we could instead view it as having 13 unique symbols-some of length-1 and some of length-2.
+
+               |------>
+               | M -> 1000
+               |        CM -> 900
+               | D -> 500  
+               |        CD -> 400
+               | C -> 100 
+               |        XC -> 90
+               | L -> 50
+               |        XL -> 40
+               | X -> 10
+               |        IX -> 9
+               | V -> 5
+               |        IV -> 4
+               | I -> 1
+               |------>
+
+For example, here is the Roman Numeral MMCMLXXXIX broken into its symbols using this definition:
+
+    MMCMLXXXIX ---> M M CM L X X X IX
+
+After making a Map of String -> Integer with the 13 "symbols", we need to work our way down the string in the same way as before (we'll do left-to-right, will work okay too),
+firstly checking if we're at a length-2 symbols, and if not, then creating it as a length-1 symbol.
+
+
+
+``````````````````````````````````````````````````````````````````Approach 3: Right-to-Left Pass```````````````````````````````````````````````````````````````````````
+Intuition: 
+
+This approach is a more elegant variant of Approach 1. Just to be clear though, Approach 1 and Approach 2 are probably sufficient for an interview. This approach is still well 
+worth understanding though.
+
+In the "subtraction" cases, such as XC, we've been updating our running sum as follows: 
+
+sum += value(c) - value(x)
+
+However, notie that this is mathematically equivalent to the following:
+
+   sum += value(c)
+   sum -= value(x)
+
+Utilizing this means that we can process one symbol each time we go around the main loop. We still need to determing whether or not out current symbol should be added or 
+subtracted by lookng at the neighbour though. 
+
+In Approach 1, we had to be careful when inspecting the next symbol to not go over the end of the string. THis check wasn't difficult to do, but it increased the code complexity a bit, 
+and it turns out we can avoid it with this approach!
+
+Observe the following`````````````````````````````````````````````````````
