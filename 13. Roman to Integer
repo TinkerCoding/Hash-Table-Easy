@@ -140,7 +140,7 @@ let n be the length of the input string (the total number of symbols in it).
 
   Because only a contrant number of single-value variables are used, the space complexity is 0(1).
 
-Approach 2: Left-to-Right Pass Improved`````````````````````````````````````````````````````````````````````````````
+`````````````````````````````````````````````````````Approach 2: Left-to-Right Pass Improved`````````````````````````````````````````````````````````````````````````````
 
 Intuition:
 
@@ -192,4 +192,26 @@ subtracted by lookng at the neighbour though.
 In Approach 1, we had to be careful when inspecting the next symbol to not go over the end of the string. THis check wasn't difficult to do, but it increased the code complexity a bit, 
 and it turns out we can avoid it with this approach!
 
-Observe the following`````````````````````````````````````````````````````
+Observe the following:
+
+   1. Without looking at the next symbol, we don't know whether or not the left-most symbol should be added or subtracted.
+   2. The right-most symbol is always added. It is either by itself, or additive part of a pair.
+
+So, what we can do initialise sum to be the value of the right-most(last) symbol. Then, we work backwards through the string, starting from the second-to-last-symbol. 
+We check the symbol after (i + 1) to detemine whether the current symbol should be "added" or "subtracted".
+
+
+Because we're startubg at the second-to-last-index, we know that index i + 1 always exists. We no longer need to handle its potential non-existence as special case, and
+additionally we're able to (cleanly) use a for loop, as we're always moving along by 1 index at at time, unlike before where it could have beem 1 or 2.
+
+Here is an animation of the above approach.
+
+Complexity Analysis
+
+> Time complexity: 0(1).
+
+ Same as Approach 1.
+
+> Space complexity: 0(1).
+
+ Same as Approach 1.
