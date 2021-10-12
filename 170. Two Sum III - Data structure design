@@ -40,4 +40,4 @@ TwoSum.prototype.find = function(value) {
  * var obj = new TwoSum()
  * obj.add(number)
  * var param_2 = obj.find(value)
- *
+ */
