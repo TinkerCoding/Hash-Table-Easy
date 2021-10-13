@@ -22,6 +22,8 @@ var isHappy= function(n) {
     };
 
 /*
+Time Complexity: O(n^2)
+Space Complexity: O(n)
 1. Create map object.
 2. While loop through "n" being not equal to 1.
    a. Create a current variable equal to "n".
