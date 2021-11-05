@@ -15,10 +15,12 @@
      }
 
      for (let char of t) {
-         if (frequencies[char] !== undefined) {
-
+         if (frequencies[char] !== undefined && frequencies[char] > 0) {
+             frequencies[char]--;
          } else {
              return char;
          }
      }
+
+     return -1;
  };
