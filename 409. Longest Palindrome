@@ -1,1 +1,23 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestPalindrome = function(s) {
+    const freq = {};
+    for(let i=0; i<s.length; i++){
+        if(freq[s[i]] === undefined){
+            freq[s[i]] = 0;
+        }
+        freq[s[i]]++;
+    }
+    let countlen = 0; let max = 0;
+    for(let i in freq){
+        if(freq[i]%2===0)countlen += freq[i];
+        else {
+            countlen += (freq[i]-1);
+            max = 1;
+        }
+    }
+    return countlen + max;
+};
 
