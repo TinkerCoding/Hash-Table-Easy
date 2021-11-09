@@ -1,1 +1,19 @@
+var findWords = function(words) {
+    return words.filter(word => only1Row(word.toLowerCase()))
+};
 
+const only1Row = (word) => {
+    let first = true, second = true, third = true
+    for (const char of word) {
+        // Once first/second/third becomes false, it will be false forever
+        first = first && "qwertyuiop".includes(char)
+        second = second && "asdfghjkl".includes(char)
+        third = third && "zxcvbnm".includes(char)
+        if (first || second || third) {
+            continue
+        } else {
+            break
+        }
+    }
+    return (first || second || third)
+}
