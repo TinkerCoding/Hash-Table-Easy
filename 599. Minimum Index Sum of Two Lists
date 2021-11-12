@@ -1,1 +1,27 @@
+/**
+ * @param {string[]} list1
+ * @param {string[]} list2
+ * @return {string[]}
+ */
+var findRestaurant = function(list1, list2) {
+    var map = new Map();
+    var map2 = new Map();
+    var result = [];
+    for(let i=0 ; i <list1.length; i++){
+        map.set(list1[i], i)
+    }
+    var min = +Infinity;
+    for(let i=0; i<list2.length; i++){
+        if( map.has(list2[i]) ){
+            map2.set(list2[i], map.get(list2[i]) + i);
+            min = Math.min(min, map2.get(list2[i]) )
+        }
+    }
 
+    map2.forEach((val, key) =>{
+        if(val === min){
+            result.push(key)
+        }
+    })
+    return result
+};
