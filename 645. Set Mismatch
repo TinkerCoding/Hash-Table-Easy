@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findErrorNums = function(nums) {
+    const results = []
+    let set  = new Set();
+
+    for (let i = 0; i < nums.length ; i++) {
+        const curNum = nums[i];
+        if (set.has(curNum)) {
+            // we have found the dup
+            results.push(curNum)
+        } else {
+            set.add(curNum)
+        }
+    }
+
+    const numsSet = new Set(nums)
+
+    let i = 1;
+    while (i <= nums.length + 1) {
+          if (!numsSet.has(i)) {
+               results.push(i)
+               return results
+          }
+          i += 1
+    }
+};
+
