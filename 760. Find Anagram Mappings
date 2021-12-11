@@ -1,1 +1,19 @@
-
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var anagramMappings = function(A, B) {
+    let bi = {};
+    B.map ( (x,i) => {
+        bi[x] = i;
+        i += 1;
+    })
+// console.log(bi);
+    let res = [];
+    A.forEach(x => {
+        res.push(bi[x])
+    })
+    
+    return res
+};
