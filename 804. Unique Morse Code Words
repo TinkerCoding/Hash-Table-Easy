@@ -3,5 +3,11 @@
  * @return {number}
  */
 var uniqueMorseRepresentations = function(words) {
+    if(words.length < 2){
+        return 1;
+       } 
     
-};
+    let checkHash = {};
+    let array = [];
+    let count = 0;
+    let hashTable = {
