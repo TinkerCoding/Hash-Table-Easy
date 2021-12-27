@@ -11,3 +11,6 @@ var uniqueMorseRepresentations = function(words) {
     let array = [];
     let count = 0;
     let hashTable = {
+      "a": ".-", 
+    
+    
