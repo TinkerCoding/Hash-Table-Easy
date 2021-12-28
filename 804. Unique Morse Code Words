@@ -5,10 +5,59 @@
 var uniqueMorseRepresentations = function(words) {
     if(words.length < 2){
         return 1;
-       } 
-    
+    }
+
     let checkHash = {};
     let array = [];
     let count = 0;
     let hashTable = {
-      "a": ".-",
+        "a": ".-",
+        "b": "-...",
+        "c": "-.-.",
+        "d": "-..",
+        "e": "."
+        "f": "..-.",
+        "g": "--.",
+        "h": "....",
+        "i": "..",
+        "j": ".---",
+        "k": "-.-",
+        "l": ".-..",
+        "m": "--",
+        "n": "-.",
+        "o": "---",
+        "p": ".--.",
+        "q": "--.-",
+        "r": ".-.",
+        "s": "...",
+        "t": "-",
+        "u": "..-"
+        "v": "...-",
+        "w": ".--",
+        "x": "-..-"
+        "y": "-.--",
+        "z": "--.."
+    };
+
+    for(let i = 0; i < words.length; i++){
+        let result = "";
+        for(let j = 0; j < words[i].length; i++){
+            if(hashTable[words[i][j]] !== undefined){
+                result += hashTable[words[i][j]];
+            }
+        }
+        array.push(result);
+        result = "";
+    }
+
+    for (code of array){
+        if(checkHash[code] === undefined){
+            checkHash[code] = 1;
+            count++;
+        } else {
+            checkHash[code] = checkHash[code] + 1;
+        }
+    }
+
+    return count;
+};
