@@ -2,16 +2,16 @@
  * @param {string[]} words
  * @return {number}
  */
-const uniqueMorseRepresentations = function (words) {
-  const morseCode = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+ const uniqueMorseRepresentations = function (words) {
+     const morseCode = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
 
-  let inMorse = new Set();
-  for (let word of words) {
-    inMorse.add(
-      word
-        .split(``)
-        .reduce((acc, cur) => (acc += morseCode[cur.charCodeAt(0) - 97]), ``)
-    );
-  }
-  return inMorse.size;
-};
+     let inMorse = new Set();
+     for (let word of words) {
+         inMorse.add(
+             word
+             .split(``)
+             .reduce((acc, cur) => (acc += morseCode[cur.charCodeAt(0) - 97]), ``)
+         );
+     } 
+     return inMorse.size;
+ };
