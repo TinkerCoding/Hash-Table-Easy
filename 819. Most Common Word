@@ -3,8 +3,30 @@
  * @param {string[]} banned
  * @return {string}
  */
-var mostCommonWord = function(paragraph, banned) {
+const mostCommonWord = (paragraph, banned) => {
+    const bannedSet = new Set(banned);
     
+    let largestFrequency = -Infinity;
+    let mostCommonWord;
     
-    
+    paragraph
+        .toLowerCase()
+        .split(/\W+/)
+        .reduce((acc, word) => {            
+            if (!bannedSet.has(word)) {
+                acc[word] = acc[word] + 1 || 1;
+
+                if (acc[word] > largestFrequency) {
+                    largestFrequency = acc[word];
+                    mostCommonWord = word
+                }
+            }
+
+            return acc;
+        }, {});
+
+    return mostCommonWord;
 };
+
+
+
