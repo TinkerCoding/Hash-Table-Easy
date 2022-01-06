@@ -29,4 +29,15 @@ const mostCommonWord = (paragraph, banned) => {
 };
 
 
+/////// JavaScript String toLowerCase() //////
 
+Example: 
+
+let text = "HelloWorld!"
+let result = text.toLowerCase();
+
+Definitions and Usage:
+
+The toLowerCase() method converts a string to lowercase letters
+
+The toLowerCase() method does not change the original string
