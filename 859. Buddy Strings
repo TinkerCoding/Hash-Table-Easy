@@ -3,8 +3,9 @@
  * @param {string} goal
  * @return {boolean}
  */
-var buddyStrings = function(s, goal) {
-    
+var buddyStrings = function(A, B) {
+    if(A.length != B.length) return false;
+    const diff = [];
     
   
   
