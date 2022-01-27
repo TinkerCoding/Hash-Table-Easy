@@ -3,7 +3,18 @@
  * @param {string} s2
  * @return {string[]}
  */
-var uncommonFromSentences = function(s1, s2) {
-    
-    
+const uncommonFromSentences = (s1, s2) => {
+  const map = new Map();
+  const arr = [...s1.split(' '), ...s2.split(' ')];
+  const result = [];
+
+  arr.forEach((item) => {
+    map.has(item) ? map.set(item, map.get(item) + 1) : map.set(item, 0);
+  });
+
+  Array.from(map).forEach((item) => {
+    if (!item[1]) result.push(item[0]);
+  })
+
+  return result;
 };
