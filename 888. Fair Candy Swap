@@ -4,5 +4,14 @@
  * @return {number[]}
  */
 var fairCandySwap = function(aliceSizes, bobSizes) {
+    let aliceCandies = aliceSizes.reduce((a,b) => a+b)
+    let bobCandies = bobSizes.reduce((a,b) => a+b)
+    let excessCandies = Math.floor((aliceCandies-bobCandies)/2)
+    let bobSet = new Set(bobSizes)
     
+    for(let i=0;i<aliceSizes.length;i++) {
+        if(bobSet.has(aliceSizes[i]-excessCandies)) {
+            return [aliceSizes[i], aliceSizes[i]-excessCandies]
+        }
+    }
 };
