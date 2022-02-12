@@ -2,3 +2,6 @@
  * @param {number[]} deck
  * @return {boolean}
  */
+var hasGroupsSizeX = function(deck) {
+    const rec = new Map()
+    deck.forEach(val => {
