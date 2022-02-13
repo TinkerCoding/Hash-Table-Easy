@@ -5,3 +5,5 @@
 var hasGroupsSizeX = function(deck) {
     const rec = new Map()
     deck.forEach(val => {
+        rec.set(val, (rec.get(val) ?? 0) + 1)
+    })
