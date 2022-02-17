@@ -16,3 +16,6 @@ var hasGroupsSizeX = function(deck) {
             num2 = div
         }
         return num1
+    }
+    return vals.reduce((cd, val) => largestCommonDivider(cd, val), vals[0]) >= 2
+};
