@@ -5,3 +5,20 @@
  */
 let compare = (a,b,order) => {
     for(let i = 0; i < Math.min(a.length, b.length);i++){
+        if(order.indexOf(a[i]) > order.indexOf(b[i]))
+            return false;
+        if(order.indexOf(a[i]) < order.indexOf(b[i]))
+            return true;
+    }
+    return (a.length < b.length)?true:false;
+}
+
+var isAlienSorted = function(words, order) {
+    for(let i = 0; i < words.length-1;i++){
+        if(words[i] == words[i+1])
+            continue;
+        if(!compare(words[i], words[i+1], order))
+            return false;
+    }
+    return true;
+};
