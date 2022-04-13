@@ -1,1 +1,45 @@
+Thinking process:
 
+1. We need to know the frequency of each word to get the common characters.
+2. I can start with building the frequency of first word and iterate through rest of the words to get the common frequency.
+3. What data structure should I use to store the frequency of the word?
+   a. Use hashmap? Sounds good but might be hard when doing the frequency comparison in words iteration.
+   b. Use 26-length array? That's it! When comparing frequency of current word and frequency of first word, the min frequency count is what we are looking for.
+
+Code:
+
+var commonChars = function(words) {
+    let size = 26;
+
+    const output = [];
+    const minFreq = new Array(size).fill(0);
+
+
+    // Use the first word to build minFreq
+    for (const char of words[0]) {
+        minFreq[char.charCodeAt() - 'a'.charCodeAt()]++;
+    }
+
+    // Loop through rest of the words and compare the frequency with minFreq
+    for (let i = 1; i < words.length; i++) {
+        const currWordFreq = new Array(size).fill(0);
+
+        for (const char of words[i]) {
+            currWordFreq[char.charCodeAt() - 'a'.charCodeAt()]++;
+        }
+
+        for (let i = 0; i < size; i++) {
+            minFreq[i] = Math.min(minFreq[i], currWordFreq[i]);
+        }
+    }
+
+    // build the output
+    for (let i = 0; i < size; i++) {
+        while (minFreq[i] > 0) {
+            output.push(String.fromCharCode(i + 'a'.charCodeAt()));
+            minFreq[i]--;
+        }
+    }
+
+    return output;
+};
