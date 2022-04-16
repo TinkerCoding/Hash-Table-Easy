@@ -1,6 +1,7 @@
 Thinking process:
 
 1. We need to know the frequency of each word to get the common characters.
+
 2. I can start with building the frequency of first word and iterate through rest of the words to get the common frequency.
 3. What data structure should I use to store the frequency of the word?
    a. Use hashmap? Sounds good but might be hard when doing the frequency comparison in words iteration.
