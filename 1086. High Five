@@ -1,1 +1,18 @@
+var highFive = function (items) {
+    const scores = {};
+    items.forEach((pair) => (scores[pair[0]] = []));
 
+    items.forEach((pair) => scores[pair[0]].push(pair[1]));
+
+    let avg;
+    const result = [];
+    for (student in scores) {
+        scores[student].sort((a, b) => b - a);
+        avg = Math.floor(
+            scores[student].slice(0, 5).reduce((sum, score) => (sum += score)) /
+                5
+        );
+        result.push([student, avg]);
+    }
+    return result;
+};
