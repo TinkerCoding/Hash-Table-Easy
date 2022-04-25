@@ -1,3 +1,7 @@
+/**
+ * @param {number[][]} items
+ * @return {number[][]}
+ */
 var highFive = function (items) {
     const scores = {};
     items.forEach((pair) => (scores[pair[0]] = []));
@@ -15,4 +19,4 @@ var highFive = function (items) {
         result.push([student, avg]);
     }
     return result;
-};
+};  
